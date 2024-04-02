@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-mt-4" style="margin-bottom:100px">
+<img src="{% static 'images/banner.jpg' %}" height="900px" width="100%">
+    </div>
+<div class="container-fluid mt-1" style="margin-bottom:100px">
+    <h3 class="text-center text-danger fw-bold">Our Collections</h3>
+    <p style="text-align:justify;line-height:2">Our website offers the ability to filter your floral needs by occasion, flower type, and color. The ability to customize and personalize your flowers means you get precisely what you want. You have the option of mixing and matching flowers or going with already pre-set floral packages. Our flowers come from all over the world. From Holland to Columbia and Kenya, you can guarantee that no one has quite a floral selection like FloraQueen. </p>
+</div>
+<div class="container-fluid" style="margin-top:100px">
+    <div class="row mb-5">
+        {% for i in c %}
+        <div class="col-sm-4">
+            <div class="card mt-2 pb-3" style="width:25rem; height:45rem;">
+  <img src="{{i.image.url}}" height="300px" width="100%" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title">{{i.name}}</h5>
+    <p class="card-text">{{i.desc}}</p>
+    <a href="{% url 'shop:products' i.id %}" style="position:relative;left:32%;width:200px;" class="btn btn-primary">products</a>
+
+  </div>
+</div>
+
+
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}
